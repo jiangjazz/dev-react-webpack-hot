@@ -1,0 +1,76 @@
+@charset "UTF-8";
+/**
+ * 组件样式
+ */
+ /********************************************************************************\
+   按钮模块
+   .u-btn
+   + .main       主色调按钮
+   + .secondary  副色调按钮   黑色
+   + .default   默认样式，不写该class会导致没有边框
+ \********************************************************************************/
+ %btn {
+     height: 30px;
+     display: inline-block;
+     vertical-align: middle;
+     text-decoration: none;
+     font-size: 12px;
+     line-height: 28px;
+     color: $white;
+     border: 0;
+     outline: none;
+     padding: 0 20px;
+     margin: 0;
+     background: none;
+     cursor: pointer;
+     @include box-sizing(border-box);
+     @include border-radius(3px);
+     // @include box-shadow(0 0px 1px 0px $fColor);
+     &:hover {
+         color: $white;
+         text-decoration: none;
+     }
+     &[disabled],
+     &.disabled {
+         background: $bgDisabled !important;
+         border: solid 1px $bdColor !important;
+         color: $disabled;
+         cursor: no-drop;
+     }
+ }
+// 颜色
+.u-btn{
+  @extend %btn;
+  &.default{
+    color: $fColor;
+    background: $white;
+    border: 1px solid $bdColor;
+    &:hover{
+      border: 1px solid $bdColor *1.1;
+    }
+  }
+  &.main{
+    background: $main;
+    border-bottom: 1px solid $main*1.1;
+    &:hover{
+      background: $mainHover;
+      border-bottom: 1px solid $main;
+    }
+  }
+  &.secondary{
+    background: $secondary;
+    border-bottom: 1px solid $secondary *1.1;
+    &:hover{
+      background: $secondaryHover;
+      border-bottom: 1px solid $secondary;
+    }
+  }
+  &.info{
+    background: $info;
+    border-bottom: 1px solid $info *1.1;
+    &:hover{
+      background: $infoHover;
+      border-bottom: 1px solid $info;
+    }
+  }
+}

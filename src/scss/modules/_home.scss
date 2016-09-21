@@ -1,0 +1,264 @@
+@charset "UTF-8";
+
+$rightNavW: 300px;
+%bd{
+  width: 20px;
+  height: 20px;
+  border: 0 solid transparent;
+  border-right:12px solid $bgInfo;
+  @include transform(rotate(20deg));
+  @include border-radius(0 0 20px 0);
+}
+// 主要内容
+.home-ct{
+  padding: 20px 25px;
+  position: absolute;
+  right: $rightNavW;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  font-size: $f_size2;
+  color: $fColor;
+  overflow-y: auto;
+  &.noNav{
+    left: 0;
+  }
+  .u-block{
+    margin-bottom: 20px;
+  }
+  .m-balance{
+    width: 250px;
+    float: left;
+    @include box-sizing(border-box);
+    &.hasNone{
+      &:hover{
+        .go{
+          display: inline-block;
+        }
+      }
+    }
+    .go{
+      display: none;
+      font-weight: normal;
+      color: $main;
+    }
+    .email{
+      padding: 15px 0;
+      height: 95px;
+      border-bottom: 1px dashed $bdColor;
+      @include box-sizing(border-box);
+    }
+    .message{
+      padding: 15px 0;
+      height: 95px;
+      @include box-sizing(border-box);
+    }
+    .other{
+      display: inline-block;
+      padding-left: 20px;
+      line-height: 2em;
+    }
+    .num {
+      width: 126px;
+      font-size: 24px;
+      line-height: 1.5em;
+      @extend .f-toe;
+    }
+  }
+  .m-recentTrip{
+    margin-left: 250px;
+    padding-left: 20px;
+    position: relative;
+    @include box-sizing(border-box);
+    .u-block{
+      height: 251px;
+      @include box-sizing(border-box);
+    }
+    .create{
+      position: absolute;
+      right: 20px;
+      top: 15px;
+    }
+    .echart{
+      padding: 15px 0;
+      width: 65px;
+      height: 65px;
+    }
+    .list{
+      .item{
+        height: 95px;
+        border-top: 1px dashed $bdColor;
+        @include box-sizing(border-box);
+        &:first-child{
+          border-top: none;
+        }
+        &:hover{
+          background: $bgInfo;
+        }
+      }
+    }
+    .detail-list{
+      li{
+        padding: 2px 30px;
+        line-height: 18px;
+        float: left;
+        border-left: 1px solid $bdColor;
+        &:first-child{
+          border-left: none;
+        }
+      }
+      .name{
+        font-size: $f_size1;
+      }
+    }
+    .activity{
+      padding: 0 20px;
+      line-height: 18px;
+      p{
+        font-size: $f_size2;
+      }
+      .time{
+        font-size: $f_size1;
+        span{
+          color: $disabled;
+        }
+      }
+    }
+    .iconCt{
+      display: inline-block;
+      margin: 20px 0 25px 0;
+      padding: 20px;
+      background: $bgInfo;
+      cursor: pointer;
+      @include border-radius(50%);
+      &:hover{
+        @include box-shadow(0 0 5px 1px $bdColor);
+      }
+    }
+    .newTrip{
+      margin-top: 20px;
+    }
+  }
+  .m-tripChart{}
+}
+
+// 右边导航
+.m-rightNav{
+  width: $rightNavW;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-size: $f_size2;
+  @include box-sizing(border-box);
+  .u-block{
+    @include box-shadow(none);
+    @include border-radius(0);
+  }
+  .m-execution{
+    margin-bottom: 20px;
+    padding: 20px 20px 19px 10px;
+    height: 270px;
+    @include box-sizing(border-box);
+    .u-prompt{
+      margin-bottom: 40px;
+      .show{
+        margin-right: 10px;
+        float: right;
+        color: $main;
+        text-decoration: underline;
+      }
+    }
+    .list{
+      @extend .f-cb;
+      .item{
+        padding: 10px 10px;
+        width: 50%;
+        height: 80px;
+        float: left;
+        text-align: center;
+        cursor: pointer;
+        @include box-sizing(border-box);
+        &:nth-child(4n+1){
+          border-right: 1px dashed $bdColor;
+        }
+        &:nth-child(4n+3){
+          border-top: 1px dashed $bdColor;
+          border-right: 1px dashed $bdColor;
+        }
+        &:nth-child(4n+4){
+          border-top: 1px dashed $bdColor;
+        }
+        &:hover{
+          background: $bgInfo;
+          &:nth-child(4n+1){
+            .name{
+              color: white;
+              background: $blue;
+            }
+          }
+          &:nth-child(4n+2){
+            .name{
+              color: white;
+              background: $yellow;
+            }
+          }
+          &:nth-child(4n+3){
+            .name{
+              color: white;
+              background: $main;
+            }
+          }
+          &:nth-child(4n+4){
+            .name{
+              color: white;
+              background: #999999;
+            }
+          }
+        }
+        .name{
+          display: inline-block;
+          margin-top: 5px;
+          padding: 0 12px;
+          background: $bgInfo;
+          @include border-radius(8px);
+        }
+        .num{
+          width: 114px;
+          font-size: 20px;
+          @extend .f-toe;
+        }
+      }
+    }
+  }
+  .m-news{
+    position: absolute;
+    top: 290px;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    .list{
+      padding-left: 10px;
+    }
+    .item{
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      position: relative;
+      background: $bgInfo;
+      @include border-radius(3px);
+      &:before{
+        content: '';
+        position: absolute;
+        left: -22px;
+        bottom: -4px;
+        @extend %bd;
+      }
+      .time{
+        color: $disabled;
+        line-height: 1.5em;
+        font-style: italic;
+      }
+    }
+
+  }
+}

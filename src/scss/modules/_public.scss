@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+$leftNavW: 205px;
+
+@mixin l-ct ($width, $type){
+  @extend .f-cb;
+  @if $type == right {
+    &>.l-l{
+      width: 100%;
+      float: left;
+      &>.l-lCt{
+        margin-right: $width;
+      }
+    }
+    &>.l-r{
+      margin-left: -#{$width};
+      width: $width;
+      float: right;
+    }
+  }
+  @else {
+    &>.l-l{
+      margin-right: -#{$width};
+      width: $width;
+      float: left;
+    }
+    &>.l-r{
+      width: 100%;
+      float: right;
+      &>.l-rCt{
+        margin-left: $width;
+      }
+    }
+  }
+}
+
+//
+.u-block{
+  padding: 15px 20px;
+  background: $white;
+  @include border-radius(5px);
+  @include box-shadow(1px 2px 2px 1px $bdColor);
+  .u-title{
+    margin-bottom: 15px;
+    border-left: 4px solid $main;
+    font-size: $f_size2;
+    text-indent: 15px;
+    line-height: 1.2em;
+    font-weight: bold;
+    span{
+      font-weight: normal;
+    }
+  }
+}
+
+// 表格
+.u-table{
+    padding: 0 15px;
+    text-align: left;
+    .table{
+        width: 100%;
+    }
+    th{
+        padding: 15px 10px 15px 20px ;
+        font-weight: bold;
+    }
+    td{
+        padding: 15px 10px 15px 20px ;
+        font-weight: normal;
+    }
+    thead{
+        font-size: $f_size1;
+    }
+    tbody{
+        font-size: $f_size1;
+        tr{
+            border-bottom: 1px dashed $bdColor;
+            cursor: pointer;
+            &:nth-child(2n+1),
+            &:hover{
+                background-color: $bgInfo;
+            }
+        }
+    }
+}
+
+// 左边导航
+.m-leftNav{
+  padding: 10px;
+  width: $leftNavW;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-right: 1px solid $bdColor;
+  z-index: 2;
+  font-size: $f_size2;
+  background: $white;
+  @include box-shadow(0 0px 1px 1px $bdColor);
+  @include box-sizing(border-box);
+  .menu{
+    dt{
+      padding: 10px 5px;
+      .title{
+        padding-left: 10px;
+        border-left: 4px solid $main;
+        color: $important;
+      }
+    }
+    dd{
+      a{
+        display: block;
+        padding: 5px;
+        font-size: $f_size1;
+        line-height: 28px;
+        text-indent: 15px;
+        cursor: pointer;
+        color: $fColor;
+        &:hover,
+        &.active{
+          background: $bgInfo;
+          color: $main;
+        }
+      }
+    }
+  }
+}
+
+// 主要内容
+.m-content{
+  padding: 20px 25px;
+  position: absolute;
+  left: $leftNavW;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  font-size: $f_size2;
+  color: $fColor;
+  overflow-y: auto;
+  &.noNav{
+    left: 0;
+  }
+}

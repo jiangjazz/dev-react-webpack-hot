@@ -1,0 +1,53 @@
+@charset "UTF-8";
+/**
+ * 颜色变量 （包括文字、背景、边框等）
+ */
+// 颜色
+$red1: #ff2b65;
+$red1Hover: #dc2658;
+$red2: #af4658;
+$yellow: #fec837;
+$blue: #0ecfe0;
+$gray1: #666666;
+$gray2: #cccccc;
+$gray3: #f2f2f2;
+$white: #ffffff;
+
+//主色调
+$main: $red1;
+$mainHover: $red1Hover;
+//副色调
+$secondary: $gray1;
+$secondaryHover: #525151;
+$info: $blue;
+$infoHover: #0dbdcd;
+//文字类
+$fColor: #666666;                  //正常文本
+$important: #333333;                //强调
+$disabled: #999999;                 //弱化
+$error: $main;
+$error2: $red2;
+$success: #316e8f;
+//背景色
+$bgInfo: $gray3;   //默认背景色
+// $bgError  : #fed8d2;  //错误信息文字颜色，————目前红色
+$bgError2: #fed8d2;
+$bgSuccess: #d8ecf7;
+$bgDisabled: $gray3; //disabled背景
+
+//边框
+$bdColor   : $gray2; //默认普通灰色边框
+$bdFocus   : #0ecfe0; //默认普通灰色边框获得焦点
+$bdSuccess   : #add7ee; //success颜色
+$bdError: $red1;
+$bdError2: #f0beb7;
+
+//阴影
+$shadow: #e8e6e6;                   //普通阴影
+
+// 字号大小
+$f_size1: 12px;
+$f_size2: 14px;
+$f_size3: 16px;
+$f_size4: 18px;
+$f_size5: 20px;

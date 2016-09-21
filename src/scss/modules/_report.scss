@@ -1,0 +1,202 @@
+@charset "UTF-8";
+// 旅程全局报告（报告首页）
+.page-reportTotal{
+  .m-act{
+    font-size: $f_size1;
+    @include l-ct(100px, right);
+    .l-lCt{
+      p{
+        margin-bottom: 15px;
+        vertical-align: middle;
+      }
+      .icon-sprite{
+        margin-top: -2px;
+      }
+    }
+    .u-select{
+      .u-hd{
+        width: 165px;
+        text-indent: 5px;
+      }
+    }
+    .downDate{
+      display: inline-block;
+      text-align: center;
+      .icon-sprite{
+        margin-bottom: 3px;
+        opacity: .5;
+      }
+      &:hover{
+        .icon-sprite{
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .sel-trip{
+    margin-bottom: 20px;
+    @include l-ct(80px, left);
+    .l-l{
+      line-height: 30px;
+    }
+    .list{
+      .item{
+        margin: 0px 10px 10px 0;
+        display: inline-block;
+        vertical-align: middle;
+        a{
+          display: block;
+          padding: 5px 10px;
+          height: 30px;
+          line-height: 20px;
+          background: $white;
+          @include border-radius(5px);
+          @include box-sizing(border-box);
+          &:hover{
+            @include box-shadow(0 0 5px 2px $shadow);
+          }
+          &.total{
+            padding: 5px 25px;
+          }
+          &.more{
+            color: $main;
+            b{
+              margin: 0 1px;
+              display: inline-block;
+              width: 4px;
+              height: 4px;
+              vertical-align: middle;
+              background: $main;
+              @include border-radius(50%);
+            }
+          }
+          &.active{
+            background: $main;
+            color: $white;
+            b{
+              background: $white;
+            }
+            &:hover{
+              background: $mainHover;
+              border-bottom: 1px solid $main;
+            }
+          }
+        }
+      }
+    }
+  }
+  .u-block{
+    margin-bottom: 30px;
+  }
+  .m-statistics{
+    @include l-ct(250px, left);
+    .detail{
+      margin: auto;
+      padding: 30px 10px;
+      width: 190px;
+      background: $bgInfo;
+      text-align: center;
+      @include border-radius(5px);
+      .num{
+        margin-top: 10px;
+        font-size: 24px;
+        line-height: 2em;
+      }
+      .name{
+        line-height: 1.5em;
+      }
+    }
+    .l-rCt{
+      @extend .f-cb;
+      .item{
+        float: left;
+        width: 33.33%;
+        text-align: center;
+        .desc{
+          display: inline-block;
+          padding: 4px 12px;
+          font-size: $f_size1;
+          background: $shadow;
+          @include border-radius(12px);
+        }
+      }
+      .echart{
+        margin: auto;
+        width: 160px;
+        height: 160px;
+      }
+    }
+  }
+  .record{
+    padding: 15px 0;
+    .til-group{
+      padding: 0 20px;
+      border-bottom: 2px solid $bgInfo;
+    }
+  }
+}
+// 导出
+.page-reportExport{
+  .m-act{
+    .icon-sprite{
+      margin: -3px 4px 0 0;
+    }
+  }
+  .export-ct{
+    position: absolute;
+    left: 15%;
+    top: 35px;
+    right: 15%;
+    bottom: 50px;
+    .note{
+      padding: 15px 0;
+    }
+    >.details{
+      padding: 30px 40px 51px 40px;
+      position: absolute;
+      left: 0;
+      top: 50px;
+      right: 0;
+      bottom: 0px;
+      overflow-y: scroll;
+      .u-label{
+        width: 125px;
+      }
+      .u-group{
+        width: 350px;
+        font-size: $f_size1;
+        &.bg{
+          padding: 10px 20px;
+          background: $bgInfo;
+          @include border-radius(3px);
+        }
+      }
+      .data-group{
+        line-height: 30px;
+        font-size: $f_size2;
+      }
+    }
+    .btn-group{
+      padding: 0 40px;
+      height: 50px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $white;
+      line-height: 50px;
+      border-top: 2px solid $bgInfo;
+    }
+  }
+  .table{
+    width: 100%;
+    th{
+      line-height: 30px;
+      border-bottom: 1px dashed $bdColor;
+      font-weight: bold;
+    }
+    td{
+      line-height: 30px;
+    }
+  }
+}

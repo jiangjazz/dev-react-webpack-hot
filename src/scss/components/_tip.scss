@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+$tipBg: #f9eeb3;
+$tipBd: #e3df55;
+$tipF: #686048;
+/***
+* 小三角构造mixin
+*/
+@mixin triangle ($position, $size){
+  $b: $size + 1;
+  &:before{
+    content: '';
+    width: 0;
+    height: 0;
+    border: #{$size}px solid transparent;
+    position: absolute;
+    z-index: 4;
+  }
+  &:after{
+    content: '';
+    width: 0;
+    height: 0;
+    border: #{$b}px solid transparent;
+    position: absolute;
+    z-index: 3;
+  }
+  @if $position == top {
+    &:before{
+      border-bottom-color: $tipBg;
+      top: -#{$size * 2}px;
+      left: 10px;
+    }
+    &:after{
+      border-bottom-color: $tipBd;
+      top: -#{$b * 2}px;
+      left: 9px;
+    }
+  }
+  @else if $position == right {
+    &:before{
+      border-left-color: $tipBg;
+      right: -#{$size * 2}px;
+      top: 10px;
+    }
+    &:after{
+      border-left-color: $tipBd;
+      right: -#{$b * 2}px;
+      top: 9px;
+    }
+  }
+  @else if $position == bottom {
+    &:before{
+      border-top-color: $tipBg;
+      bottom: -#{$size * 2}px;
+      left: 10px;
+    }
+    &:after{
+      border-top-color: $tipBd;
+      bottom: -#{$b * 2}px;
+      left: 9px;
+    }
+  }
+  @else if $position == left {
+    &:before{
+      border-right-color: $tipBg;
+      left: -#{$size * 2}px;
+      top: 10px;
+    }
+    &:after{
+      border-right-color: $tipBd;
+      left: -#{$b * 2}px;
+      top: 9px;
+    }
+  }
+    // @each $prefix in $prefixes{
+    //     @if $prefix == webkit and $prefix-for-webkit == true {
+    //         -webkit-#{$property}: $value;
+    //     }
+    //     @else if $prefix == moz and $prefix-for-mozilla == true {
+    //         -moz-#{$property}: $value;
+    //     }
+    //     @else if $prefix == ms and $prefix-for-microsoft == true {
+    //         -ms-#{$property}: $value;
+    //     }
+    //     @else if $prefix == o and $prefix-for-opera == true {
+    //         -o-#{$property}: $value;
+    //     }
+    //     @else if $prefix == spec and $prefix-for-spec == true {
+    //         #{$property}: $value;
+    //     }
+    // }
+}
+
+.u-tip{
+  position: relative;
+  >.msg{
+    margin-top: 10px;
+    padding: 10px 15px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: $tipF;
+    text-indent: 0;
+    border: 1px solid $tipBd;
+    background: $tipBg;
+    visibility: hidden;
+    opacity: 0;
+    @include box-sizing(border-box);
+    @include border-radius(3px);
+    @include triangle(top, 8);
+    @include transition(opacity 0.3s linear);
+  }
+  &:hover{
+    >.msg{
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}

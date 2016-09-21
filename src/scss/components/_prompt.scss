@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+/********************************************************************************\
+  .u-prompt 方框样式的报错形式
+  .u-group 表单样式的报错形式
+\********************************************************************************/
+%group{
+  margin-bottom: 30px;
+  position: relative;
+  .prompt{
+    display: none;
+    height: 30px;
+    line-height: 30px;
+    color: $error;
+    font-size: $f_size2;
+    text-indent: 20px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    &:before{
+      content: '';
+      position: absolute;
+      top: 7px;
+      left: 2px;
+      @extend .icon-sprite;
+      @extend .icon-error;
+    }
+  }
+  &.error{
+    .u-input,
+    .u-textarea{
+      border-color: $bdError;
+      @include box-shadow(none);
+    }
+    .prompt{
+      display: block;
+    }
+  }
+}
+
+.u-group{
+  @extend %group;
+}
+%promptGroup{
+  margin-bottom: 30px;
+  position: relative;
+  .prompt{
+      display: none;
+      width: 100%;
+      height: 30px;
+      position: absolute;
+      top: 100%;
+      left: 0px;
+      font-size: $f_size2 !important;
+      line-height: 30px;
+      text-indent: 25px;
+      @include border-radius(3px);
+  }
+}
+.u-prompt{
+  @extend %promptGroup;
+  &.error{
+      input[type="text"],
+      input[type="password"],
+      input[type="number"],
+      select{
+          border-color: $bdError2 !important;
+      }
+      .prompt{
+          display: block;
+          color: $error2;
+          background-color: $bgError2;
+          border: 1px solid $bdError2;
+          &:before{
+              content: '';
+              margin-top: -8px;
+              position: absolute;
+              top: 50%;
+              left: 5px;
+              @include icon-sprite();
+              @include icon-prompt-error();
+          }
+      }
+  }
+  &.success{
+      .prompt{
+          display: block;
+          color: $success;
+          background-color: $bgSuccess;
+          border: 1px solid $bdSuccess;
+          &:before{
+              content: '';
+              margin-top: -7px;
+              position: absolute;
+              top: 50%;
+              left: 5px;
+              @include icon-sprite();
+              @include icon-prompt-success();
+          }
+      }
+  }
+}

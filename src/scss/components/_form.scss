@@ -1,0 +1,175 @@
+@charset "UTF-8";
+/********************************************************************************\
+  单选款复选框模块
+  .u-checkbox       复选框
+  .u-radio          单选框
+\********************************************************************************/
+
+%checkboxradio {
+    height: 30px;
+    font-size: 12px;
+    line-height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 0 0 30px;
+    position: relative;
+    cursor: pointer;
+    b {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: -1px;
+        left: 0;
+        display: none \9;
+    }
+    span {
+        display: block;
+        height: 30px;
+        line-height: 27px;
+    }
+    input {
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        top: 9px \9;
+        left: 7px \9;
+        z-index: 2 \9;
+    }
+    input:disabled + b + span {
+        @include opacity(50);
+        cursor: no-drop;
+    }
+    input:disabled + b {
+        @include opacity(50);
+        cursor: no-drop;
+    }
+}
+.u-checkbox {
+    @extend %checkboxradio;
+    b {
+        @include icon-sprite;
+        @include icon-check;
+    }
+    input:hover + b {
+        @include icon-check-hover;
+    }
+    input:checked + b {
+        @include icon-check-active;
+    }
+    input:hover:disabled + b {
+        @include icon-check;
+    }
+    input:hover:disabled:checked + b {
+        @include icon-check-active;
+    }
+}
+.u-radio {
+    @extend %checkboxradio;
+    b {
+        @include icon-sprite;
+        @include icon-radio;
+    }
+    input:hover + b {
+        @include icon-radio-hover;
+    }
+    input:checked + b {
+        @include icon-radio-active;
+    }
+    input:hover:disabled + b {
+        @include icon-radio;
+    }
+    input:hover:disabled:checked + b {
+        @include icon-radio-active;
+    }
+}
+
+/********************************************************************************\
+  text与textarea输入框样式【默认宽度为100%,textarea默认高度为90px】
+\********************************************************************************/
+
+%inputtextarea {
+    width: 100%;
+    height: 30px;
+    line-height: 18px;
+    margin: 0;
+    padding: 5px;
+    font-size: 14px;
+    outline: none;
+    border: solid 1px $bdColor;
+    @include border-radius(3px);
+    @include box-sizing(border-box);
+    @include box-shadow(inset 0 1px 1px $shadow);
+    &:focus {
+        border-color: $bdFocus;
+        @include box-shadow(none);
+    }
+}
+input[class^="u-input"] {
+    @extend %inputtextarea;
+    height: 30px;
+    vertical-align: middle;
+    &.mini {
+        height: 25px;
+    }
+}
+.i-date{
+  margin: 0 8px 0 4px;
+  position: relative;
+  input[class^="u-input"]{
+    width: 115px;
+    padding-right: 30px;
+    &:focus + b{
+      @include icon-date-active;
+    }
+  }
+  &>b{
+    content: '';
+    margin-top: -8px;
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    @include icon-sprite;
+    @include icon-date;
+  }
+}
+textarea[class^="u-textarea"] {
+    @extend %inputtextarea;
+    height: 90px;
+}
+/********************************************************************************\
+  .u-form     表单组
+\********************************************************************************/
+
+%formGroup{
+  label[class^="u-label"]{
+    display: inline-block;
+    padding: 0 10px 0 0;
+    line-height: 30px;
+    vertical-align: top;
+    &.required,
+    &[required]{
+      padding-left: 15px;
+      position: relative;
+      &:before{
+        content: '*';
+        position: absolute;
+        left: 2px;
+        top:0;
+        color: $main;
+        line-height: 30px;
+      }
+    }
+  }
+  input[class^="u-input"],
+  textarea[class^="u-textarea"]{
+    display: inline-block;
+    line-height: 30px;
+  }
+}
+.u-form{
+  @extend %formGroup;
+  .u-group{
+    display: inline-block;
+  }
+}

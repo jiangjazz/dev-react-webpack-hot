@@ -1,0 +1,202 @@
+@charset "UTF-8";
+
+/********************************************************************************\
+  select下拉菜单
+  .u-select   默认样式
+  + .auto       自动缩放
+  + .main       主色调
+  + .secondary  副色调
+\********************************************************************************/
+%select {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    z-index: 5;
+    font-size: 12px;
+    line-height: 0;
+    background: $white;
+    &:hover{
+      >.u-hd {
+        >b{
+          border-top-color: transparent;
+          border-bottom-color: $bdColor;
+          margin-top: 7px;
+        }
+      }
+      >.u-bd{
+        padding: 5px 0 0 0;
+        ul{
+          border: solid 1px $bdColor;
+          a{
+            height: 30px;
+          }
+        }
+      }
+    }
+    >.u-hd {
+        margin: 0;
+        padding: 0 10px;
+        border: solid 1px $bdColor;
+        outline: none;
+        font-size: 12px;
+        color: $fColor;
+        display: inline-block;
+        vertical-align: middle;
+        background: none;
+        text-decoration: none;
+        cursor: pointer;
+        height: 30px;
+        line-height: 29px;
+        position: relative;
+        @include box-sizing(border-box);
+        @include border-radius(3px);
+        //@include box-shadow(0 1px 0 #bbb8de);
+        >b {
+            float: right;
+            width: 0;
+            height: 0;
+            border: solid 5px transparent;
+            border-top-color: $bdColor;
+            margin: 12px -5px 0 5px;
+            @include transition(all .3s ease);
+        }
+        >span {
+            max-width: 100px;
+            min-width: 40px;
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+    >.u-bd {
+        width: 125px;
+        position: absolute;
+        left: 0;
+        top: 29px;
+    }
+    ul {
+        width: 100%;
+        max-height: 155px;
+        overflow-y: auto;
+        background: $white;
+        @include border-radius(3px);
+        @include box-sizing(border-box);
+        @include box-shadow(2px 2px 1px $shadow);
+        a {
+            font-size: 12px;
+            display: block;
+            height: 0px;
+            line-height: 30px;
+            padding: 0 0 0 15px;
+            color: $fColor;
+            border-left: solid 4px $white;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            @include transition(height .3s ease);
+            &:hover {
+                background: $bgInfo;
+                color: $fColor;
+                text-decoration: none;
+                border-left: solid 4px $bdColor;
+            }
+        }
+        b {
+            float: right;
+            width: 0;
+            height: 0;
+            border: solid 5px transparent;
+            border-top-color: $bdColor;
+            margin: 12px -5px 0 5px;
+        }
+    }
+    &.disabled,
+    &[disabled]{
+        color: $disabled !important;
+        >.u-hd {
+          color: $disabled !important;
+          background: $bgDisabled !important;
+          border: solid 1px $bdColor !important;
+          cursor: no-drop !important;
+          >b{
+            margin-top: 12px !important;
+            border-top-color: $bdColor !important;
+            border-bottom-color: transparent !important;
+          }
+        }
+        &:hover{
+          >.u-bd{
+            padding: 0 !important;
+            ul{
+              border: none !important;
+              a{
+                height: 0px !important;
+              }
+            }
+          }
+        }
+    }
+}
+.u-select{
+  @extend %select;
+  &.auto {
+      >.u-hd {
+          >span {
+              max-width: none;
+          }
+      }
+      >.u-bd {
+          width: auto;
+          a {
+              padding: 0 10px;
+          }
+      }
+  }
+  &.main{
+    >.u-hd {
+        border: none;
+        background: $main;
+        border-bottom: solid 1px $main/1.3;
+        color: $white;
+        >b {
+            border-top-color: $white;
+        }
+    }
+    &:hover {
+        >.u-hd {
+            background: $mainHover;
+            >b {
+                border-top-color: transparent;
+                border-bottom-color: $white;
+            }
+        }
+    }
+    ul a:hover {
+        border-left-color: $main;
+    }
+  }
+  &.secondary{
+    >.u-hd {
+        border: none;
+        background: $secondary;
+        border-bottom: solid 1px $secondary/1.3;
+        color: $white;
+        >b {
+            border-top-color: $white;
+        }
+    }
+    &:hover {
+        >.u-hd {
+            background: $secondaryHover;
+            >b {
+                border-top-color: transparent;
+                border-bottom-color: $white;
+            }
+        }
+    }
+    ul a:hover {
+        border-left-color: $secondary;
+    }
+  }
+}

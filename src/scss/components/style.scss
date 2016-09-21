@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/******************************
+ * UI框架基础样式
+ */
+
+@import 'button';       //按钮组件
+@import 'select';       //下拉框
+@import 'form';         //表单相关
+@import 'search';       //搜索
+@import 'prompt';       //提示
+@import 'pagination';   //分页
+@import 'tip';          //提示信息

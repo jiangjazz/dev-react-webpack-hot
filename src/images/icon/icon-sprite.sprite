@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SpriteFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CssFileName="../images/icon" ImageName="icon-sprite" IsPhone="false" SpriteImgFileType="Png" xmlns="CssSprite">
+  <SpriteList>
+    <Sprite Path="icon-search.png" LocationX="0" LocationY="0" />
+    <Sprite Path="icon-search-active.png" LocationX="28" LocationY="0" />
+    <Sprite Path="icon-radio-hover.png" LocationX="56" LocationY="0" />
+    <Sprite Path="icon-check.png" LocationX="86" LocationY="0" />
+    <Sprite Path="icon-radio-active.png" LocationX="116" LocationY="0" />
+    <Sprite Path="icon-check-active.png" LocationX="146" LocationY="0" />
+    <Sprite Path="icon-check-hover.png" LocationX="176" LocationY="0" />
+    <Sprite Path="icon-radio.png" LocationX="206" LocationY="0" />
+    <Sprite Path="icon-error.png" LocationX="236" LocationY="0" />
+    <Sprite Path="icon-prompt-error.png" LocationX="251" LocationY="0" />
+    <Sprite Path="icon-prompt-success.png" LocationX="266" LocationY="0" />
+    <Sprite Path="icon-logo.png" LocationX="281" LocationY="0" />
+    <Sprite Path="icon-info.png" LocationX="303" LocationY="0" />
+    <Sprite Path="icon-date.png" LocationX="309" LocationY="0" />
+    <Sprite Path="icon-tip.png" LocationX="325" LocationY="0" />
+    <Sprite Path="icon-back.png" LocationX="355" LocationY="0" />
+    <Sprite Path="icon-data.png" LocationX="371" LocationY="0" />
+    <Sprite Path="icon-date-active.png" LocationX="386" LocationY="0" />
+    <Sprite Path="icon-go.png" LocationX="402" LocationY="0" />
+    <Sprite Path="icon-trip.png" LocationX="416" LocationY="0" />
+  </SpriteList>
+</SpriteFile>

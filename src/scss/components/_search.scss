@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/********************************************************************************\
+  .u-search  搜索
+\********************************************************************************/
+
+%search {
+    display: inline-block;
+    height: 30px;
+    // border: solid 1px $bdColor;
+    font-size: 12px;
+    // padding: 0 5px 0 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 15px;
+    position: relative;
+    input {
+        padding: 4px 35px 4px 15px;
+        width: 170px;
+        height: 20px;
+        line-height: 20px;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        border: solid 1px $bdColor;
+        @include border-radius(15px);
+        &:focus + b {
+            @include icon-sprite;
+            @include icon-search-active;
+        }
+    }
+    b {
+        width: 28px;
+        height: 22px;
+        cursor: pointer;
+        position: absolute;
+        top: 4px;
+        right: 5px;
+        @include icon-sprite;
+        @include icon-search;
+    }
+}
+.u-search{
+  @extend %search;
+  input{
+    &.disabled,
+    &[disabled]{
+      padding: 5px 35px 5px 15px;
+      background: $bgInfo;
+      border: none;
+      cursor: no-drop;
+      &+b{
+        cursor: no-drop;
+      }
+    }
+  }
+}

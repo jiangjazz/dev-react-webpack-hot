@@ -1,0 +1,54 @@
+@charset "UTF-8";
+.pagination{
+  padding: 10px 20px 0 20px;
+  .u-page {
+    height: 25px;
+    .btn {
+        height: 23px;
+        display: inline-block;
+        vertical-align: middle;
+        border: solid 1px $bdColor;
+        background: $white;
+        overflow: hidden;
+        margin: 0 10px;
+        @include border-radius(3px);
+        dt,
+        dd {
+            float: left;
+        }
+        dt {
+            border-right: solid 1px $bdColor;
+        }
+        a {
+            display: block;
+            width: 23px;
+            height: 23px;
+            text-decoration: none;
+            &:hover {
+                background-color: $bgInfo;
+            }
+        }
+        .prev {
+          text-align: center;
+        }
+        .next {
+          text-align: center;
+        }
+    }
+    .text {
+        color: #8d94a1;
+        font-size: 12px;
+        display: inline-block;
+        line-height: 25px;
+        vertical-align: middle;
+    }
+    .input{
+      display: inline-block;
+      width: 60px;
+      font-size: $f_size1;
+      line-height: 23px;
+      border: 1px solid $bdColor;
+      @include border-radius(3px);
+    }
+  }
+}
