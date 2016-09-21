@@ -1,12 +1,12 @@
-# dev-react-webpack-hot
-> Jazz's react dev base  (react结合webpack开发)
+# 基于webpack的react开发
+> Jazz's react dev base
 
 ## step
 
 ``` bash
 npm install
 
-## 开发
+## 开发（热加载 ）
 npm run start
 
 ## 生产dev
