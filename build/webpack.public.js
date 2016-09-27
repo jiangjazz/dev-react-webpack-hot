@@ -3,7 +3,11 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const config = require('../config')
-console.log(process.env.NODE_ENV)
+// console.log(process.env.NODE_ENV)
+
+const alias = {
+  UI: [path.join(__dirname, '../src/component/UI/index.js')]
+}
 
 module.exports = {
     entry: {
@@ -14,9 +18,14 @@ module.exports = {
         publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
         filename: '[name].js'
     },
+    externals: {
+        jquery: "jQuery",
+        RAP: "RAP" // 通过CDN - 把全局变量转成module
+    },
     resolve: {
         extensions: ['', '.js', '.jsx'],
-        fallback: [path.join(__dirname, '../node_modules')]
+        fallback: [path.join(__dirname, '../node_modules')],
+        alias: alias
     },
     resolveLoader: {
         fallback: [path.join(__dirname, '../node_modules')]
@@ -28,7 +37,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel',
                 query: {
-                    presets:['react','es2015']
+                    presets:['react','es2015', 'stage-0']
                 }
             },
             {

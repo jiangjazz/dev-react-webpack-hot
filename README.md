@@ -1,21 +1,38 @@
-# 基于webpack的react开发
-> Jazz's react dev base
+# contact2
+> dmayun系列项目之——联系人
 
-## step
+## 编译步骤
 
 ``` bash
+## 安装包文件
 npm install
+```
 
-## 开发（热加载 ）
-npm run start
+``` bash
+##开发者模式
 
-## 生产dev
+### dev
+npm run s-dev
+
+### beta
+npm run s-beta
+
+### master
+npm run s-master
+```
+
+
+
+``` bash
+## 生产编译步骤
+
+### dev
 npm run dev
 
-## 生产beta
+### beta
 npm run beta
 
-## 生产master
+### master
 npm run master
 
 ```

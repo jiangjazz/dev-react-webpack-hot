@@ -3,7 +3,10 @@ const express = require('express')
 const webpack = require('webpack')
 // const proxyMiddleware = require('http-proxy-middleware')
 
-const webpackConfig = require('./webpack.dev')
+const _env = process.argv.splice(2)[0] || 'dev'
+console.log(_env)
+
+const webpackConfig = require('./webpack.dev')(_env)
 const config = require('../config/')
 
 const port = config.dev.port

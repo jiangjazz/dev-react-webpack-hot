@@ -1,14 +1,18 @@
 {
-  "name": "test",
+  "name": "contact2",
   "version": "1.0.0",
-  "description": "react test",
-  "main": "index.js",
+  "description": "contact of dmayun",
+  "main": "build/build.js",
   "dependencies": {
-    "react-dom": "^15.3.2",
-    "react": "^15.3.2"
+    "axios": "^0.14.0",
+    "jquery": "^3.1.1",
+    "lodash": "^4.16.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
+    "babel-preset-stage-0": "^6.5.0",
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.3.13",
@@ -23,6 +27,8 @@
     "node-sass": "^3.10.0",
     "ora": "^0.3.0",
     "react-redux": "^4.0.6",
+    "react-router": "^2.8.1",
+    "redux-thunk": "^2.1.0",
     "redux": "^3.0.5",
     "sass-loader": "^4.0.2",
     "shelljs": "^0.7.4",
@@ -34,13 +40,19 @@
     "webpack-merge": "^0.14.1"
   },
   "scripts": {
-    "start": "node build/server.js",
+    "s-dev": "node build/server.js dev",
+    "s-beta": "node build/server.js beta",
+    "s-master": "node build/server.js master",
     "dev": "node build/build.js dev",
     "beta": "node build/build.js beta",
     "master": "node build/build.js master"
   },
   "keywords": [
-    "react"
+    "react",
+    "webpack",
+    "hot-loader",
+    "dmayun",
+    "contact2"
   ],
   "author": "Jazz",
   "license": "ISC"
