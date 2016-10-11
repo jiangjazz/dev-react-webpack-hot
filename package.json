@@ -1,7 +1,7 @@
 {
-  "name": "contact2",
+  "name": "react",
   "version": "1.0.0",
-  "description": "contact of dmayun",
+  "description": "react redux react-router 练手",
   "main": "build/build.js",
   "dependencies": {
     "axios": "^0.14.0",
@@ -55,6 +55,6 @@
     "dmayun",
     "contact2"
   ],
-  "author": "Jazz",
+  "author": "Jazz Lay",
   "license": "ISC"
 }
