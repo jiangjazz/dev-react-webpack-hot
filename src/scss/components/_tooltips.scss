@@ -1,0 +1,85 @@
+$tip-color: rgba(0, 0, 0, 0.8);
+$tip-size: 5px;
+
+.u-tip {
+  &__wrap {
+    display: inline-block;
+  }
+  &__wrap.active &__popper{
+    display: block;
+  }
+  &__content {
+    position: relative;
+  }
+  &__popper {
+    display: none;
+    padding: 6px 10px;
+    margin: 5px;
+    max-width: 268px;
+    color: $white;
+    line-height: 1.5;
+    background-color: $tip-color;
+    border-radius: $radius;
+    z-index: 1000;
+
+    &:after {
+      content: '';
+      position: absolute;
+    }
+
+    &[x-placement^=top],
+    &[x-placement^=bottom] {
+      &:after {
+        left: 15px;
+        border-left: $tip-size solid transparent;
+        border-right: $tip-size solid transparent;
+      }
+    }
+
+    &[x-placement^=left],
+    &[x-placement^=right] {
+      &:after {
+        top: 50%;
+        border-top: $tip-size solid transparent;
+        border-bottom: $tip-size solid transparent;
+        @include transform(translateY(-50%));
+      }
+    }
+
+    &[x-placement^=top] {
+      &:after {
+        bottom: -$tip-size;
+        border-top: $tip-size solid $tip-color;
+      }
+    }
+
+    &[x-placement^=bottom] {
+      &:after {
+        top: -$tip-size;
+        border-bottom: $tip-size solid $tip-color;
+      }
+    }
+
+    &[x-placement^=right] {
+      &:after {
+        left: -$tip-size;
+        border-right: $tip-size solid $tip-color;
+      }
+    }
+
+    &[x-placement^=left] {
+      &:after {
+        right: -$tip-size;
+        border-left: $tip-size solid $tip-color;
+      }
+    }
+  }
+
+  //  状态
+  &--Textcenter {
+    text-align: center;
+  }
+  &--Textleft {
+    text-align: left;
+  }
+}

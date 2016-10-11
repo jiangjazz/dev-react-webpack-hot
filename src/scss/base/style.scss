@@ -2,10 +2,7 @@
 /******************************
  * 页面公共样式
  */
-@import 'sprite';      //雪碧图
-@import 'variate';      //变量
+@import 'iconfont';     //字体图标
 @import 'mixin';        //mixin生产
 @import 'cssproperty';  //css属性生产（主要css3）
-@import 'animate';      //animate生产
-
-@import 'reset';                    //基础样式构造    大部分引用nec.css
+@import 'reset';        //基础样式构造    大部分引用nec.css

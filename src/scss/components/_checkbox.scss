@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+@charset "UTF-8";
+
+/**
+*  tip: checkbox 图标有字体来代替
+*  dec: 在 react 中更换 checkbox 其他状态需要监听组件中 checked 的状态
+*       比较麻烦,所以直接写在css中
+*/
+
+$icon-square-o: "\e611";
+$icon-check-square: "\e613";
+$icon-square: "\e612";
+
+.u-checkbox {
+  position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 1;
+	cursor: pointer;
+	outline: none;
+	@include opacity(0);
+
+  &__icon:before {
+    content: $icon-square-o;
+  }
+
+  &:checked+&__icon {
+    color: $primary-color;
+    &:before {
+      content: $icon-check-square;
+    }
+  }
+  &[type="checkbox"][disabled] {
+    cursor: not-allowed;
+  }
+  &[type="checkbox"][disabled]+&.icon-lock,
+  &[type="checkbox"][disabled]+&__icon,
+  &[type="checkbox"][disabled]:checked+&__icon {
+    color: $from-default-color;
+  }
+  &[type="checkbox"][disabled]+&__icon {
+    &:before {
+      content: $icon-square;
+    }
+  }
+  &[type="checkbox"][disabled]:checked+&__icon {
+    &:before {
+      content: $icon-check-square;
+    }
+  }
+  &:hover{
+    &+.u-checkbox__icon{
+      color: $primary-color;
+    }
+  }
+  &__content,
+  &__wrap {
+    display: inline-block;
+		position: relative;
+		vertical-align: middle;
+    line-height: 1;
+  }
+  &__content { font-size: 14px; }
+  &__content .icon-lock,
+  &__content &__icon{
+    color: $from-default-color;
+  }
+  &__content &__icon:hover {
+    color: $primary-color;
+  }
+}

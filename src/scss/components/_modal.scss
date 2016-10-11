@@ -1,0 +1,93 @@
+$modal-inex : 2000;
+$mark-bg : rgba(0,0,0,.3);
+$modal-border-color: #e1e1e1;
+
+.u-modal {
+  &__wrap,
+  &__mark {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  &__wrap {
+    z-index: $modal-inex;
+  }
+  &__mark {
+    background-color: $mark-bg;
+  }
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: $white;
+    border-radius: $radius;
+    @include box-shadow(rgba(0,0,0,0.09) 0 1px 0);
+    @include transform(translateY(-50%) translateX(-50%));
+
+    .icon-remove {
+      position: absolute;
+      top: 15px;
+      right: 16px;
+      font-size: 12px;
+      font-weight: 100;
+      color: $secondary-hover;
+      cursor: pointer;
+      opacity: 0.2;
+      z-index: 10;
+
+      &:hover {
+        opacity: 1
+      }
+    }
+  }
+  &__header {
+    font-size: 14px;
+    padding: 0 18px;
+    height: 45px;
+    line-height: 45px;
+  }
+  &__header.u-modal--sizeNotS {
+    text-align: left;
+    border-bottom: 1px solid  $modal-border-color;
+  }
+  &__header.u-modal--sizeIsS {
+    position: relative;
+    top: 20px;
+    text-align: center;
+  }
+  &__footer {
+    padding: 0 12px 20px;
+    .u-btn {
+      margin: 0 8px;
+    }
+  }
+  &__footer.u-modal--sizeIsS {
+    text-align: center;
+  }
+  &__footer.u-modal--sizeNotS {
+    text-align: right;
+  }
+  &__body {
+    padding: 25px 30px;
+
+    &--flow {
+      overflow: hidden;
+      overflow-y: auto;
+    }
+  }
+
+  //  状态
+  &--s {
+    width: 300px;
+  }
+
+  &--m {
+    width: 600px;
+  }
+
+  &--l {
+    width: 900px;
+  }
+}

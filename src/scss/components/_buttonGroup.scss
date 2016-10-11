@@ -1,0 +1,38 @@
+@charset "UTF-8";
+@mixin radius($positon, $value:0) {
+  $p1: nth($positon, 1);
+  $p2: nth($positon, 2);
+  -moz-border-radius-#{$p1 + $p2}: $value;
+  -webkit-border-#{$p1}-#{$p2}-radius: $value;
+  border-#{$p1}-#{$p2}-radius: $value;
+}
+.u-btnGroup{
+  display: inline-block;
+  .u-btn{
+    @include border-radius(0)
+  }
+  .u-btn:first-child{
+    @include radius(top left, 3px)
+    @include radius(bottom left, 3px)
+    &.radius-half{
+      @include radius(top left, 50px)
+      @include radius(bottom left, 50px)
+    }
+    &.radius-total{
+      @include radius(top left, 50%)
+      @include radius(bottom left, 50%)
+    }
+  }
+  .u-btn:last-child{
+    @include radius(top right, 3px)
+    @include radius(bottom right, 3px)
+    &.radius-half{
+      @include radius(top right, 50px)
+      @include radius(bottom right, 50px)
+    }
+    &.radius-total{
+      @include radius(top right, 50%)
+      @include radius(bottom right, 50%)
+    }
+  }
+}

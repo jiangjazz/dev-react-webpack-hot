@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+$notifiy-index: 3000;
+$mark-bg : rgba(0,0,0,.8);
+$defaultHeight: 75px;
+
+.u-notifiy {
+  &__wrap {
+    position: fixed;
+    left: 0;
+	  width: 100%;
+    z-index: $notifiy-index;
+  }
+  &__content {
+    position: absolute;
+    right: 50%;
+
+    .icon-remove {
+      position: absolute;
+      right: 8px;
+      top: -22px;
+      font-size: 12px;
+      color: $disabled-color;
+      cursor: pointer;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+  &__inset {
+    position: relative;
+		left: 50%;
+    height: $defaultHeight;
+    line-height: $defaultHeight;
+    padding: 0 50px;
+    background-color: $mark-bg;
+    border-radius: $radius;
+    color: $white;
+    opacity: 0;
+    font-size: 16px;
+
+    @include transition(0.5s opacity $ease-in-out);
+
+    .iconfont {
+      padding-right: 5px;
+    }
+  }
+  &--transition &__inset{
+    opacity: 1
+  }
+}

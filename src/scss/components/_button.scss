@@ -9,68 +9,150 @@
    + .secondary  副色调按钮   黑色
    + .default   默认样式，不写该class会导致没有边框
  \********************************************************************************/
- %btn {
-     height: 30px;
-     display: inline-block;
-     vertical-align: middle;
-     text-decoration: none;
-     font-size: 12px;
-     line-height: 28px;
-     color: $white;
-     border: 0;
-     outline: none;
-     padding: 0 20px;
-     margin: 0;
-     background: none;
-     cursor: pointer;
-     @include box-sizing(border-box);
-     @include border-radius(3px);
-     // @include box-shadow(0 0px 1px 0px $fColor);
-     &:hover {
-         color: $white;
-         text-decoration: none;
+%btn {
+    display: inline-block;
+    margin: 0;
+    padding: 0 15px;
+    height: 30px;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 28px;
+    color: $white;
+    border: 0;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    @include box-sizing(border-box);
+    @include border-radius(3px);
+    // @include box-shadow(0 0px 1px 0px $default-color);
+    &:hover {
+       color: $white;
+       text-decoration: none;
+    }
+    &[disabled],
+    &.disabled {
+       background: $disabled-bg !important;
+       border: solid 1px $default-border !important;
+       color: $disabled-color;
+       cursor: no-drop;
+    }
+}
+
+/**
+ * [按钮样式生成器]
+ * @param  {[Array]} $date   [包含必选的三参数，背景色、hover背景色、边框色]
+ * @param  {[String]} $color: $white        [文字颜色，默认白色]
+ */
+ @mixin btnStyle ($date, $color: $white, $colorHover: $white) {
+   $bg: nth($date, 1);
+   $bgHover: nth($date, 2);
+   $bd: nth($date, 3);
+   color: $color;
+   background: $bg;
+   border: 1px solid #{$bd};
+   &:hover{
+     background: $bgHover;
+     color: $colorHover;
+     @if $bd == none {
+       border: none;
+     } @else{
+       border: 1px solid #{$bd *0.9};
      }
-     &[disabled],
-     &.disabled {
-         background: $bgDisabled !important;
-         border: solid 1px $bdColor !important;
-         color: $disabled;
-         cursor: no-drop;
-     }
+
+   }
+   &[disabled],
+   &.disabled {
+     background: #{$bg} !important;
+     border: solid 1px #{$bd} !important;
+     opacity: 0.6;
+     cursor: no-drop;
+   }
  }
+// 大小
+.u-btn{
+  &.small{
+    height: 22px;
+    line-height: 20px;
+  }
+  &.large{
+    height: 35px;
+    line-height: 33px;
+  }
+  &.larger{
+    height: 45px;
+    line-height: 43px;
+  }
+}
+
 // 颜色
 .u-btn{
   @extend %btn;
   &.default{
-    color: $fColor;
-    background: $white;
-    border: 1px solid $bdColor;
-    &:hover{
-      border: 1px solid $bdColor *1.1;
-    }
+    @include btnStyle($white $white $default-border, $default-color, $default-color-hover);
   }
   &.main{
-    background: $main;
-    border-bottom: 1px solid $main*1.1;
-    &:hover{
-      background: $mainHover;
-      border-bottom: 1px solid $main;
-    }
+    @include btnStyle($main $main-hover $main);
   }
   &.secondary{
-    background: $secondary;
-    border-bottom: 1px solid $secondary *1.1;
-    &:hover{
-      background: $secondaryHover;
-      border-bottom: 1px solid $secondary;
+    @include btnStyle($secondary $secondary-hover $secondary);
+  }
+}
+
+//图标
+.u-btn{
+  .iconfont{
+    color: inherit;
+    line-height: 1em;
+  }
+  span{
+    color: inherit;
+    display: inline-block;
+  }
+  .iconfont+span{
+    padding-left: 5px;
+  }
+  span+.iconfont{
+    padding-left: 5px;
+  }
+}
+
+// 外观类型
+.u-btn{
+  &.radius-half{
+    @include border-radius(50px)
+  }
+  &.radius-total{
+    padding: .5em;
+    height: auto;
+    line-height: 1em;
+    @include border-radius(50%)
+  }
+  &.no-border{
+    border: none;
+    &.default{
+      @include btnStyle($white $white none, $default-color, $default-color-hover);
+    }
+    &.main{
+      @include btnStyle($white $white none, $main, $main-hover);
+    }
+    &.secondary{
+      @include btnStyle($white $white none, $secondary, $secondary-hover);
     }
   }
-  &.info{
-    background: $info;
-    border-bottom: 1px solid $info *1.1;
-    &:hover{
-      background: $infoHover;
-      border-bottom: 1px solid $info;
+}
+
+// outline
+.u-btn{
+  &.outline{
+    &.default{
+      @include btnStyle($white $default-color $default-border, $default-color);
+    }
+    &.main{
+      @include btnStyle($white $main $main, $main);
+    }
+    &.secondary{
+      @include btnStyle($white $secondary $secondary, $secondary);
     }
   }
 }

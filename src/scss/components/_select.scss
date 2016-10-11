@@ -19,15 +19,16 @@
       >.u-hd {
         >b{
           border-top-color: transparent;
-          border-bottom-color: $bdColor;
+          border-bottom-color: $default-border;
           margin-top: 7px;
         }
       }
       >.u-bd{
         padding: 5px 0 0 0;
         ul{
-          border: solid 1px $bdColor;
+          border: solid 1px $default-border;
           a{
+            text-align: left;
             height: 30px;
           }
         }
@@ -35,11 +36,11 @@
     }
     >.u-hd {
         margin: 0;
-        padding: 0 10px;
-        border: solid 1px $bdColor;
+        padding: 0 15px;
+        border: solid 1px $default-border;
         outline: none;
         font-size: 12px;
-        color: $fColor;
+        color: $default-color;
         display: inline-block;
         vertical-align: middle;
         background: none;
@@ -56,7 +57,7 @@
             width: 0;
             height: 0;
             border: solid 5px transparent;
-            border-top-color: $bdColor;
+            border-top-color: $default-border;
             margin: 12px -5px 0 5px;
             @include transition(all .3s ease);
         }
@@ -82,24 +83,24 @@
         background: $white;
         @include border-radius(3px);
         @include box-sizing(border-box);
-        @include box-shadow(2px 2px 1px $shadow);
+        @include box-shadow(2px 2px 1px $box-shoadow);
         a {
             font-size: 12px;
             display: block;
             height: 0px;
             line-height: 30px;
             padding: 0 0 0 15px;
-            color: $fColor;
+            color: $default-color;
             border-left: solid 4px $white;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             @include transition(height .3s ease);
             &:hover {
-                background: $bgInfo;
-                color: $fColor;
+                background: $default-bg;
+                color: $default-color;
                 text-decoration: none;
-                border-left: solid 4px $bdColor;
+                border-left: solid 4px $default-border;
             }
         }
         b {
@@ -107,21 +108,21 @@
             width: 0;
             height: 0;
             border: solid 5px transparent;
-            border-top-color: $bdColor;
+            border-top-color: $default-border;
             margin: 12px -5px 0 5px;
         }
     }
     &.disabled,
     &[disabled]{
-        color: $disabled !important;
+        color: $disabled-color !important;
         >.u-hd {
-          color: $disabled !important;
-          background: $bgDisabled !important;
-          border: solid 1px $bdColor !important;
+          color: $disabled-color !important;
+          background: $disabled-bg !important;
+          border: solid 1px $default-border !important;
           cursor: no-drop !important;
           >b{
             margin-top: 12px !important;
-            border-top-color: $bdColor !important;
+            border-top-color: $default-border !important;
             border-bottom-color: transparent !important;
           }
         }
@@ -165,7 +166,7 @@
     }
     &:hover {
         >.u-hd {
-            background: $mainHover;
+            background: $main-hover;
             >b {
                 border-top-color: transparent;
                 border-bottom-color: $white;
@@ -188,7 +189,7 @@
     }
     &:hover {
         >.u-hd {
-            background: $secondaryHover;
+            background: $secondary-hover;
             >b {
                 border-top-color: transparent;
                 border-bottom-color: $white;

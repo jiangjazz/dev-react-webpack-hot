@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+$notifiy-index: 3000;
+
+/**
+*  tip: 不同状态下的样式生成
+*  参数:
+*    {String} $color : 文字颜色
+*    {String} $bg : 背景颜色
+*/
+ @mixin AlertStatus ($color, $bg) {
+   .icon-remove {
+     color: $color;
+     opacity: 0.2;
+     &:hover {
+       opacity: 0.5;
+     }
+   }
+   .u-alert__inset {
+     color: $color;
+     background-color: $bg;
+   }
+ }
+
+.u-alert {
+  &__wrap {
+    position: fixed;
+    left: 0;
+    top: -200px;
+	  width: 100%;
+    z-index: $notifiy-index;
+
+    @include transition(0.3s all $ease-in-out-circ);
+  }
+  &__content {
+    position: absolute;
+    right: 50%;
+
+    .icon-remove {
+      position: absolute;
+      right: 15px;
+      top: 18px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+  }
+  &__inset {
+    position: relative;
+		left: 50%;
+    min-width: 300px;
+    max-width: 600px;
+    line-height: 1;
+    padding: 15px 20px;
+    border-radius: $radius;
+    color: $white;
+    font-size: 14px;
+
+    .iconfont {
+      padding-right: 5px;
+    }
+  }
+  &__head {
+    &__dec {
+      font-weight: 100
+    }
+  }
+
+  //  状态
+  &--info {
+    @include AlertStatus($info-color, $info-bg)
+  }
+  &--success {
+    @include AlertStatus($success-color, $success-bg)
+  }
+  &--warning {
+    @include AlertStatus($warning-color, $warning-bg)
+  }
+  &--danger {
+    @include AlertStatus($danger-color, $danger-bg)
+  }
+}
