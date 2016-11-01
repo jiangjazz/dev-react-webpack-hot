@@ -1,5 +1,5 @@
-# react redux react-router
-> 练手小项目
+# contact2
+> dmayun系列项目之——联系人
 
 ## 编译步骤
 

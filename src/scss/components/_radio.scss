@@ -9,6 +9,7 @@
 $icon-circle-o: "\e60d";
 $icon-dot-circle-o: "\e61f";
 $icon-circle: "\e60e";
+$icon-font: 16px;
 
 .u-radio {
   position: absolute;
@@ -51,15 +52,19 @@ $icon-circle: "\e60e";
       color: $primary-color;
     }
   }
-  &__content,
+
   &__wrap {
     display: inline-block;
 		position: relative;
 		vertical-align: middle;
     line-height: 1;
   }
-  &__content { font-size: 14px; }
+  &__dec {
+    font-size: 14px;
+  }
+  &__content { font-size: 16px; }
   &__content &__icon{
+    font-size: $icon-font;
     color: $from-default-color;
     &:hover {
       color: $primary-color;

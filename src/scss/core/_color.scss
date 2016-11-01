@@ -24,14 +24,20 @@ $danger-bg      : #ffcccc;
 
 //  全局边框颜色
 $default-border:  #e0e0e0;
-
+$default-border-focus:  #cccccc;
 //  全局按钮颜色
 $box-shoadow: 3px 0 3px rgba(255, 255, 255, .07);
 
 //  文本颜色
-
+$text-link : #999999;
+$text-link-hover: #333333;
+$text-error: #d0392d;
 //  表单
 $from-default-color: #cccccc;
+$from-border-color: #e0e0e0;
+$from-disabled-color: #999999;
+$from-hover-color: #999999;
+$from-error-bg: #fcdcdc;
 
 // add by Janzen
 $main: $primary-color;

@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+.page-contactDetails{
+  .details-row{
+    margin: 10px 20px 30px 20px;
+    border: 1px solid $default-border;
+    @include border-radius(3px);
+    .details-head{
+      padding: 0 20px;
+      background: $default-bg;
+      line-height: 45px;
+      .actGroup{
+        float: right;
+        .u-btn{
+          margin: 0 5px;
+        }
+      }
+    }
+    .details-body{
+      padding: 20px 20px;
+    }
+  }
+  .userIcon{
+    width: 10%;
+    .iconCt{
+      display: inline-block;
+      width: 2em;
+      height: 2em;
+      line-height: 2em;
+      text-align: center;
+      font-size: 45px;
+      background: $main;
+      @include border-radius(50%);
+      .iconfont{
+        color: white;
+      }
+    }
+  }
+  .otherMsg{
+    margin-top: 18px;
+    width: 90%;
+    .name{
+      color: $disabled-color;
+      line-height: 2em;
+    }
+    .value{
+      line-height: 2em;
+      @extend .f-toe;
+    }
+    .u-col-4{
+      padding: 0 40px;
+      text-align: center;
+      @include box-sizing(border-box);
+    }
+    .u-col-4:not(:first-child){
+      border-left: 1px solid $default-border;
+    }
+  }
+  .fields{
+    .name{
+      padding: 0 15px;
+      height: 40px;
+      line-height: 40px;
+      background: #fafafa;
+      border-right: 1px solid $default-border;
+      border-bottom: 1px solid $default-border;
+    }
+    .value{
+      padding: 0 15px;
+      height: 40px;
+      line-height: 40px;
+      border-right: 1px solid $default-border;
+      border-bottom: 1px solid $default-border;
+      @extend .f-toe;
+      .u-input{
+        border: none;
+        font-size: 12px;
+        &:focus{
+          border: 1px solid $from-hover-color;
+        }
+      }
+    }
+    .u-col-4{
+      &:nth-child(6n){
+        .name,
+        .value{
+          border-right: none;
+        }
+      }
+    }
+  }
+}

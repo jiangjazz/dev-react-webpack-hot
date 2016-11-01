@@ -13,7 +13,7 @@ module.exports = function (_env) {
     var _envs = JSON.stringify(_env)
     console.log(JSON.stringify(_env))
     if (_envs == '"master"') {
-        _ENV = '"master"'
+        _ENV = '"production"'
     }else if (_envs == '"beta"') {
         _ENV = '"beta"'
     }else{
@@ -28,7 +28,7 @@ module.exports = function (_env) {
         },
         plugins: [
             new webpack.DefinePlugin({
-                '_ENV': _ENV
+                '_ENV': JSON.stringify(_ENV)
             }),
             new ExtractTextPlugin(path.posix.join(config.build.assetsSubDirectory, 'css/[name].[chunkhash].css')), //单独使用style标签加载css并设置其路径
             new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML

@@ -6,7 +6,10 @@ const config = require('../config')
 // console.log(process.env.NODE_ENV)
 
 const alias = {
-  UI: [path.join(__dirname, '../src/component/UI/index.js')]
+  UI: [path.join(__dirname, '../src/component/UI/index.js')],
+  Common: [path.join(__dirname, '../src/component/Common')],
+  RouteReducer: [path.join(__dirname, '../src/store/reducers.js')],
+  Public: [path.join(__dirname, '../src/store/public.js')]
 }
 
 module.exports = {

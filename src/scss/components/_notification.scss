@@ -8,6 +8,7 @@ $defaultHeight: 75px;
   &__wrap {
     position: fixed;
     left: 0;
+    top: 50%;
 	  width: 100%;
     z-index: $notifiy-index;
   }
@@ -39,8 +40,8 @@ $defaultHeight: 75px;
     color: $white;
     opacity: 0;
     font-size: 16px;
-
-    @include transition(0.5s opacity $ease-in-out);
+    margin-top: -$defaultHeight/2;
+    @include transition(0.5s opacity ease-out);
 
     .iconfont {
       padding-right: 5px;

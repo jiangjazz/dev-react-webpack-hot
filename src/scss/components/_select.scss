@@ -1,5 +1,6 @@
 @charset "UTF-8";
-
+// .icon-caret-up:before { content: "\e605"; }
+// .icon-caret-down:before { content: "\e601"; }
 /********************************************************************************\
   select下拉菜单
   .u-select   默认样式
@@ -7,24 +8,43 @@
   + .main       主色调
   + .secondary  副色调
 \********************************************************************************/
+// 设置arrow图标
+@mixin iconType($type: 1) {
+  @if $type == 1 {
+    &:before{
+      content: "\e601";
+    }
+  } @else if $type == 2 {
+    &:before{
+      content: "\e605";
+    }
+  }
+}
+
 %select {
     display: inline-block;
     vertical-align: middle;
     position: relative;
-    z-index: 5;
     font-size: 12px;
     line-height: 0;
     background: $white;
+    .iconfont{
+      display: inline-block;
+    }
+    &.active,
     &:hover{
       >.u-hd {
-        >b{
-          border-top-color: transparent;
-          border-bottom-color: $default-border;
-          margin-top: 7px;
+        background: $default-bg;
+      }
+    }
+    &.active{
+      >.u-hd {
+        .iconfont{
+          @include iconType(2);
         }
       }
       >.u-bd{
-        padding: 5px 0 0 0;
+        // padding: 5px 0 0 0;
         ul{
           border: solid 1px $default-border;
           a{
@@ -36,7 +56,7 @@
     }
     >.u-hd {
         margin: 0;
-        padding: 0 15px;
+        padding-right: 30px;
         border: solid 1px $default-border;
         outline: none;
         font-size: 12px;
@@ -51,20 +71,30 @@
         position: relative;
         @include box-sizing(border-box);
         @include border-radius(3px);
+        @include transition(all .3s ease);
         //@include box-shadow(0 1px 0 #bbb8de);
-        >b {
-            float: right;
-            width: 0;
-            height: 0;
-            border: solid 5px transparent;
-            border-top-color: $default-border;
-            margin: 12px -5px 0 5px;
+        .iconCt{
+          display: inline-block;
+          height: 28px;
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+        .iconfont {
+          height: 28px;
+          padding-right: 14px;
+          @include iconType(1);
+          &:before{
             @include transition(all .3s ease);
+          }
         }
         >span {
             max-width: 100px;
             min-width: 40px;
             display: inline-block;
+            padding: 0 0 0 15px;
+            height: 28px;
+            line-height: 30px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -73,8 +103,7 @@
     >.u-bd {
         width: 125px;
         position: absolute;
-        left: 0;
-        top: 29px;
+        z-index: 222;
     }
     ul {
         width: 100%;
@@ -114,63 +143,95 @@
     }
     &.disabled,
     &[disabled]{
-        color: $disabled-color !important;
-        >.u-hd {
-          color: $disabled-color !important;
-          background: $disabled-bg !important;
-          border: solid 1px $default-border !important;
-          cursor: no-drop !important;
-          >b{
-            margin-top: 12px !important;
-            border-top-color: $default-border !important;
-            border-bottom-color: transparent !important;
-          }
-        }
-        &:hover{
-          >.u-bd{
-            padding: 0 !important;
-            ul{
-              border: none !important;
-              a{
-                height: 0px !important;
-              }
-            }
-          }
-        }
+      @include opacity(60)
     }
 }
+
+// 位置
+.u-select{
+  // bottomLeft
+  &.default{
+    >.u-bd {
+        left: 0;
+        top: 31px;
+    }
+    &.active{
+      >.u-bd {
+        padding: 5px 0 0 0;
+      }
+    }
+  }
+  &.bottomRight{
+    >.u-bd {
+        right: 0;
+        top: 31px;
+    }
+    &.active{
+      >.u-bd {
+        padding: 5px 0 0 0;
+      }
+    }
+  }
+  &.topLeft{
+    &.active{
+      >.u-hd {
+        .iconfont{
+          @include iconType(1);
+        }
+      }
+    }
+    >.u-hd {
+      .iconfont{
+        @include iconType(2);
+      }
+    }
+    >.u-bd {
+        left: 0;
+        bottom: 31px;
+    }
+    &.active{
+      >.u-bd {
+        padding: 0 0 5px 0;
+      }
+    }
+  }
+  &.topRight{
+    &.active{
+      >.u-hd {
+        .iconfont{
+          @include iconType(1);
+        }
+      }
+    }
+    >.u-hd {
+      .iconfont{
+        @include iconType(2);
+      }
+    }
+    >.u-bd {
+        right: 0;
+        bottom: 31px;
+    }
+    &.active{
+      >.u-bd {
+        padding: 0 0 5px 0;
+      }
+    }
+  }
+}
+// 颜色
 .u-select{
   @extend %select;
-  &.auto {
-      >.u-hd {
-          >span {
-              max-width: none;
-          }
-      }
-      >.u-bd {
-          width: auto;
-          a {
-              padding: 0 10px;
-          }
-      }
-  }
   &.main{
     >.u-hd {
-        border: none;
         background: $main;
-        border-bottom: solid 1px $main/1.3;
+        border: solid 1px $main/1.3;
         color: $white;
-        >b {
-            border-top-color: $white;
-        }
     }
+    &.active,
     &:hover {
         >.u-hd {
             background: $main-hover;
-            >b {
-                border-top-color: transparent;
-                border-bottom-color: $white;
-            }
         }
     }
     ul a:hover {
@@ -179,25 +240,77 @@
   }
   &.secondary{
     >.u-hd {
-        border: none;
         background: $secondary;
-        border-bottom: solid 1px $secondary/1.3;
+        border: solid 1px $secondary/1.3;
         color: $white;
-        >b {
-            border-top-color: $white;
-        }
     }
+    &.active,
     &:hover {
         >.u-hd {
             background: $secondary-hover;
-            >b {
-                border-top-color: transparent;
-                border-bottom-color: $white;
-            }
         }
     }
     ul a:hover {
         border-left-color: $secondary;
+    }
+  }
+}
+// 形状
+.u-select{
+  &.auto {
+      >.u-hd {
+          >span {
+              max-width: none;
+          }
+      }
+      >.u-bd {
+          width: 100%;
+          a {
+              padding: 0 10px;
+          }
+      }
+  }
+}
+
+//类型
+.u-select{
+  &.type2 {
+    >.u-hd {
+      >span{
+        padding: 0 15px;
+        height: 28px;
+        line-height: 30px;
+        float: left;
+        border-right: 1px solid $default-border;
+      }
+      .iconfont{
+        padding: 0 10px;
+        height: 28px;
+        line-height: 30px;
+        float: left;
+        background: $default-bg;
+        @include border-radius(0 3px 3px 0)
+      }
+    }
+    &.main{
+      >.u-hd {
+        >span{
+          border-right: 1px solid $main;
+        }
+        .iconfont{
+          background: $main-hover;
+        }
+      }
+    }
+    &.secondary{
+      >.u-hd {
+        >span{
+          border-right: 1px solid $secondary;
+        }
+        .iconfont{
+          background: $secondary-hover;
+        }
+      }
     }
   }
 }

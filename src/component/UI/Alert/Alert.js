@@ -50,7 +50,7 @@ class Alert {
     return $div
   }
 
-  _timer = null
+  static _timer = null
 
   _setClose(_this, $tem) {
     clearTimeout(_this._timer)
@@ -60,7 +60,7 @@ class Alert {
   _setAnimation(dom) {
 		setTimeout(function() {
 			dom.style.top = '100px'
-		}, 0)
+		}, 10)
 		setTimeout(function() {
 			dom.style.top = '-200px'
 		}, setTime)

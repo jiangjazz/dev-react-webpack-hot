@@ -8,6 +8,23 @@ let pic2 = require('../../statics/logo-message.png')
 let pic3 = require('../../statics/logo-mrtb.png')
 let pic4 = require('../../statics/logo-journey.png')
 
+const NAV_list = [
+  {
+    name: '联系人组',
+    link: '/'
+  },
+  {
+    name: '过滤器',
+    link: '/filter'
+  },
+  {
+    name: '字段设置',
+    link: '/fields'
+  }
+
+]
+
+
 class Header extends Component {
   constructor(props) {
     super(props)
@@ -47,15 +64,24 @@ class Header extends Component {
     const pattern = new RegExp('^' + regexp + '(\/|(\/.*))?$', 'ig')
     return pattern.test(this.props.pathname)
   }
+  docEvent() {
+    // header页面
+    $('.dropdown-menu').slideUp()
+    // Select 组件
+    $('.u-select').removeClass('active')
+    // SelectMulti 组件
+    $('.u-selectMulti').removeClass('active')
+  }
   // ready
   componentDidMount() {
-    let _this = this
-    $(document).on('click', function(){
-      $('.dropdown-menu').slideUp()
-      _this.setState({
-        showUser: false
-      })
+    this.setState({
+      showUser: false
     })
+    $(document).on('click', this.docEvent)
+  }
+  componentWillUnmount() {
+    let _this = this
+    $(document).off('click', this.docEvent)
   }
   render() {
     let { pathname } = this.props
@@ -72,9 +98,16 @@ class Header extends Component {
                   <b className="icon-sprite icon-logo"></b>
                   <span className="contact">联系人</span>
               </dt>
-              <dd className={ this.checkActive('\/')? 'active' : ''} >
-                <Link to="/">联系人组</Link>
-              </dd>
+              {
+                NAV_list.map( (item, index) => {
+                  let pattern = '\\' + item.link
+                  return(
+                    <dd className={ this.checkActive(pattern)? 'active' : ''} key={ '_NAV' + index } >
+                      <Link to={ item.link }>{ item.name }</Link>
+                    </dd>
+                  )
+                })
+              }
               <dd className={ this.checkActive('\/ui')? 'active' : ''} >
                 <Link to="/ui">UI组件</Link>
               </dd>

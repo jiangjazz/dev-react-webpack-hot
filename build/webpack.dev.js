@@ -48,7 +48,7 @@ module.exports = function (_env) {
                 allChunks: true
             }),
             new webpack.DefinePlugin({
-                '_ENV': _ENV
+                '_ENV': JSON.stringify(_ENV)
             }),
             // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
             new webpack.optimize.OccurenceOrderPlugin(),

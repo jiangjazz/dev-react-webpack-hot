@@ -1,0 +1,114 @@
+.m-input {
+  &__group {
+    display: inline-block;
+  }
+
+  &--IconRight,
+  &--search,
+  &--searchDif {
+    position: relative;
+
+    .icon-search {
+      position: absolute;
+      right: 10px;
+      top: 6px;
+      color: $from-hover-color;
+      font-size: 18px;
+      cursor: pointer;
+
+      &:active {
+        color: #333;
+      }
+    }
+    .u-input {
+      padding-right: 30px;
+    }
+  }
+
+  &--IconRight {
+    &>.iconfont {
+      position: absolute;
+      right: 10px;
+      top: 6px;
+      color: $from-hover-color;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 10;
+      &:active {
+        color: #333;
+      }
+    }
+  }
+
+  &-warp {
+    &__prepend,
+    &__append {
+      vertical-align: middle;
+      display: table-cell;
+      width: 1%;
+      white-space: nowrap;
+    }
+
+    &__append {
+      .u-select > .u-hd,
+      &>.u-btn{
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left: none;
+      }
+    }
+
+    &__prepend {
+      .u-select > .u-hd,
+      &>.u-btn{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: none;
+      }
+    }
+
+  }
+
+  &--select,
+  &--button {
+    position: relative;
+    width: 100%;
+    display: table;
+    border-collapse: separate;
+    font-size: 14px;
+
+    &>.u-input {
+      float: left;
+      position: relative;
+      display: table-cell;
+    }
+    &>.u-input:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0
+    }
+    &>.u-input:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0
+    }
+    &>.u-input:not(:first-child):not(:first-child) {
+      border-radius: 0
+    }
+  }
+
+  &--select {
+    .u-select > .u-hd {
+      height: 35px;
+      line-height: 33px;
+    }
+  }
+
+  &--number {
+    position: relative;
+
+    &:hover {
+      .u-input__number__action {
+        opacity: 1
+      }
+    }
+  }
+}

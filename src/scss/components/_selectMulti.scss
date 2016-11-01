@@ -1,0 +1,161 @@
+@charset "UTF-8";
+// .icon-caret-up:before { content: "\e605"; }
+// .icon-caret-down:before { content: "\e601"; }
+/********************************************************************************\
+  select下拉菜单
+  .u-select   默认样式
+  + .auto       自动缩放
+  + .main       主色调
+  + .secondary  副色调
+\********************************************************************************/
+// 设置arrow图标
+@mixin iconType($type: 1) {
+  @if $type == 1 {
+    &:before{
+      content: "\e601";
+    }
+  } @else if $type == 2 {
+    &:before{
+      content: "\e605";
+    }
+  }
+}
+
+%selectMulti {
+    display: inline-block;
+    width: 200px;
+    vertical-align: middle;
+    position: relative;
+    font-size: 12px;
+    background: $white;
+    &.active {
+      >.u-hd {
+        .iconfont{
+          @include iconType(2);
+        }
+      }
+      >.u-bd {
+        border: 1px solid $default-border;
+        ul {
+          padding: 5px 10px;
+          a{
+            text-align: left;
+            height: 35px;
+          }
+        }
+      }
+    }
+    >.u-hd{
+      padding: 0 32px 0 15px;
+      height: 35px;
+      line-height: 35px;
+      font-size: $text-h5-size;
+      cursor: pointer;
+      border: 1px solid $default-border;
+      border-bottom: none;
+      background: $white;
+      @include box-sizing(border-box);
+      @include transition(border .3 ease);
+      @extend .f-toe;
+      .iconCt{
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .iconfont {
+        padding: 0 15px 0 5px;
+        font-size: $text-h6-size;
+        @include iconType(1);
+      }
+        &.hasInput{
+          padding: 0;
+          border-bottom: 1px solid $default-border;
+          .u-input{
+            width: 100%;
+            border: none;
+            @include box-sizing(border-box);
+          }
+        }
+    }
+
+    >.u-bd {
+      position: absolute;
+      width: 100%;
+      z-index: 20;
+      background: $white;
+      @include box-sizing(border-box);
+      ul{
+        padding: 0;
+        max-height: 35px * 5;
+        overflow-y: auto;
+      }
+      a{
+        display: block;
+        width: 100%;
+        padding: 0 15px;
+        height: 0;
+        font-size: 12px;
+        line-height: 35px;
+        color: $default-color;
+        @extend .f-toe;
+        @include box-sizing(border-box);
+        @include transition(all .3s ease);
+        &:hover{
+          background: $default-bg;
+          color: $default-color-hover;
+          font-weight: bold;
+        }
+      }
+      .noDate{
+        color: $warning-color;
+        background: $warning-bg;
+        &:hover{
+          color: $warning-color;
+          font-weight: normal;
+          background: $warning-bg;
+        }
+      }
+    }
+
+    &.disabled,
+    &[disabled]{
+      @include opacity(60)
+    }
+}
+
+.u-selectMulti{
+  @extend %selectMulti;
+}
+// 其他功能组样式
+.u-selectMulti{
+  &.type2{
+    &.active {
+      .searchCt ,
+      .actCt {
+        display: block;
+      }
+    }
+    >.u-bd {
+      border-top: 1px solid transparent;
+    }
+    .searchCt {
+      display: none;
+      padding: 5px 10px;
+      @include transition(all .3s ease);
+      .m-input__group{
+        width: 100%;
+      }
+      .u-input {
+        font-size: $text-h6-size;
+      }
+    }
+    .actCt{
+      display: none;
+      padding: 0 15px;
+      line-height: 35px;
+      background: $default-bg;
+      @include transition(all .3s ease);
+    }
+  }
+}

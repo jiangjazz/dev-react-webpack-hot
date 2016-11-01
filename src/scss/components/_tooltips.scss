@@ -1,27 +1,26 @@
+@charset "UTF-8";
+
 $tip-color: rgba(0, 0, 0, 0.8);
 $tip-size: 5px;
 
 .u-tip {
-  &__wrap {
-    display: inline-block;
-  }
-  &__wrap.active &__popper{
-    display: block;
-  }
   &__content {
     position: relative;
+    display: inline-block;
   }
   &__popper {
     display: none;
-    padding: 6px 10px;
+    padding: 8px 10px;
     margin: 5px;
     max-width: 268px;
     color: $white;
     line-height: 1.5;
     background-color: $tip-color;
     border-radius: $radius;
-    z-index: 1000;
-
+    z-index: 2001;
+    &.active {
+      display: block;
+    }
     &:after {
       content: '';
       position: absolute;

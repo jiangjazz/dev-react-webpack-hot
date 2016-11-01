@@ -8,6 +8,7 @@
 *   {Number} defaultTime  : 出现的时间, 默认显示3秒 | 单位　秒
 *   {Number} defaultTop   : 出现的顶部距离 默认为 100px
 *   {String} content      : 提示文字
+*   {Function} onClose    : 关闭事件
 * method:
 *   Notification.init(config)
 */
@@ -19,7 +20,7 @@ let body = document.getElementsByTagName('body')[0]
 * 定义默认变量
 */
 const setTime = 3
-const setTop = 100
+const setTop = '45%'
 
 //  定义类
 class Notification {
@@ -41,39 +42,44 @@ class Notification {
         </div>
       </div>
     `
-    $div.style.top = defaultTop? defaultTop + 'px' : setTop + 'px'
+    //$div.style.top = defaultTop? defaultTop + 'px' : setTop
     $div.className = 'u-notifiy__wrap'
     $div.innerHTML = $template;
 
     return $div
   }
 
-  _timer = null
+  static _timer = null
 
-  _setClose($tem) {
+  _setClose($tem, config) {
     let _this = this;
     let el = $tem.getElementsByClassName('icon-remove')[0]
     el.onclick = () => {
       clearTimeout(_this._timer)
       body.removeChild($tem)
+      config.onClose && config.onClose()
     }
   }
 
-  _setAnimation($tem, {defaultTime}) {
+  _setAnimation($tem, {defaultTime, onClose}) {
+    let hideTime =  defaultTime? defaultTime * 1000 : setTime * 1000
     setTimeout(() => {
       $tem.className += ' u-notifiy--transition'
-    }, 0)
-
+    }, 1)
+    setTimeout(() => {
+      $tem.className = 'u-notifiy__wrap'
+    }, hideTime)
     this._timer = setTimeout(() => {
       body.removeChild($tem)
-    }, defaultTime? defaultTime * 1000 : setTime * 1000)
+      onClose && onClose()
+    }, hideTime + 300)
   }
 
   _init(config) {
     let $tem = this._template(config)
     body.appendChild($tem)
     this._setAnimation($tem, config)
-    this._setClose($tem)
+    this._setClose($tem, config)
   }
 
   init(config) {

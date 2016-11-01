@@ -19,7 +19,7 @@ class Radio extends Component {
   }
 
   render() {
-    let { value, disabled, checked, name, key, onChange , children, distance = 30} = this.props
+    let { value, disabled, defaultChecked, checked, name, key, onChange , children, distance = 30} = this.props
     return (
       <label className="u-radio__wrap" key={ key }>
         <span className="u-radio__content">
@@ -30,7 +30,8 @@ class Radio extends Component {
             name={ name }
             disabled={ disabled }
             onChange={ this._hanlderChange.bind(this) }
-            defaultChecked={ checked }
+            defaultChecked={ defaultChecked }
+            checked={ checked }
             ref="radio"/>
             <i className="iconfont u-radio__icon"></i>
         </span>
@@ -41,7 +42,7 @@ class Radio extends Component {
 
   _hanlderChange() {
     let radioStatus = this.refs.radio.checked
-    this.onChange && this.onChange(this.props)
+    this.props.onChange && this.props.onChange(this.props, radioStatus, this.refs.radio)
   }
 }
 

@@ -2,7 +2,6 @@ import React, { component, PropTypes } from 'react'
 import Header from '../../../component/Header'
 
 export const LayoutView = (props) => {
-  console.log(props)
   // 获取组件
   let { children } = props
   // 获取数据

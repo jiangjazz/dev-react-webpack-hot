@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import Button from '../../Button'
+import { Button, Icon } from 'UI'
 
 class Footer extends Component {
   constructor(props) {
@@ -7,12 +7,29 @@ class Footer extends Component {
   }
 
   render() {
-    let { size, clickSure, clickClose, sureText, cancelText } = this.props
+    let {
+      size,
+      clickSure,
+      clickClose,
+      sureText,
+      cancelText,
+      sureDisabled,
+      showSureButton,
+      onLoding } = this.props
 
     return (
-      <div className={'u-modal__footer ' + (size == 's'? 'u-modal--sizeIsS': 'u-modal--sizeNotS')} >
-        <Button type="default" onClick={ clickClose }> { sureText } </Button>
-        <Button type="main" onClick={ clickSure }> { cancelText } </Button>
+      <div className={'u-modal__footer ' + (size == 's'? 'u-modal--sizeIsS': 'u-modal--sizeNotS')} data-id={onLoding}>
+        <Button color="default" size="large" onClick={ clickClose } > { cancelText } </Button>
+        {
+          showSureButton?
+          onLoding?
+          <Button color="main" size="large" onClick={ clickSure } disabled>
+            <Icon type="loading" />
+          </Button>:
+          <Button color="main" size="large" onClick={ clickSure } disabled={ sureDisabled }> { sureText } </Button>:
+          null
+        }
+
       </div>
     )
   }

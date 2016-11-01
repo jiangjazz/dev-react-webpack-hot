@@ -3,9 +3,12 @@
  * UI框架基础样式
  */
 
-@import 'button';       //按钮组件
-@import 'buttonGroup';  //组按钮组件
-@import 'select';       //下拉框
+@import 'button';          //按钮组件
+@import 'buttonGroup';     //组按钮组件
+@import 'select';          //下拉框
+@import 'selectMulti';     //多功能下拉框
+@import 'processBar';      //进度条
+@import 'loading';         //加载
 // @import 'form';         //表单相关
 // @import 'search';       //搜索
 // @import 'prompt';       //提示
@@ -15,4 +18,7 @@
 @import 'notification';    // 通知信息
 @import 'alert';           // 警示栏
 @import 'radio';           // 单选框
-@import 'checkbox';           // 单选框
+@import 'checkbox';        // 多选框
+@import 'breadcrumb';      // 单选
+@import 'input';           // 输入框
+@import "datetimepicker"; // 时间控件  bootstarp

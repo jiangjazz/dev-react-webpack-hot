@@ -1,3 +1,7 @@
+$.ajaxSetup({
+  headers: {token: '4c3e8605fb1f404986d2b4a1c67805f5'}
+})
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -19,5 +23,5 @@ let render = () => {
     MOUNT_NODE
   )
 }
-
+console.log('%c目前的环境是'+_ENV, 'background: black;color: white;')
 render()

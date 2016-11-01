@@ -10,7 +10,10 @@ import Icon from '../Icon'
 * 参数:
 *   {Boolean}  sholudBGClose  : 是否要确定背景点击取消
 *   {Boolean}  showModal      : 是否要打开模态框
+*   {Boolean}  showMark       : 是否有背景
 *   {Boolean}  showFooter     : 是否要确认和取消按钮 默认为 显示
+*   {Boolean}  showSureButton : 是否要显示 确认按钮 默认为 显示
+*   {Boolean}  onSureLoding   : 是否确认后 按钮变成loding状态 默认 false
 *   {String}   size           : 模态框的大小 ( s | m | l ) 默认为 m
 *   {String}   title          : 模态框的标题
 *   {Number}   maxHeight      : 限制最大的宽度  用于内容较长的时候出现滚动条
@@ -30,52 +33,70 @@ class Modal extends Component {
   }
 
   render() {
-    let { size, title, showModal, maxHeight, showFooter = true, children, onSure, onClose, sureText = '确定', cancelText='取消' } = this.props
+    let {
+      size,
+      title,
+      showModal = false,
+      onSureLoding = false,
+      maxHeight,
+      showFooter = true,
+      showMark = true,
+      sholudBGClose = false,
+      children,
+      onSure,
+      className = '',
+      onClose,
+      sureDisabled,
+      showSureButton = true,
+      sureText = '确定',
+      cancelText='取消'
+    } = this.props
+
     let MAXHeight = maxHeight? {height: maxHeight + 'px'} : {}
     return (
-      showModal? (<div className="u-modal__wrap">
-        <div
-          className="u-modal__mark"
-          onClick={ this._handlerMarkClick.bind(this) }></div>
-        <div className={'u-modal__content u-modal' + (size? '--' + size : '--m' )}>
-          <Icon
-            type="remove"
-            onClick={ this._handlerClose.bind(this) } />
-          <Header
-            title={ title }
-            size={ size }/>
+      showModal?(
+        <div className={'u-modal__wrap ' + (showModal? ' u-modal__wrap--show ': '') + className}>
           <div
-            className={ 'u-modal__body ' +  (maxHeight? 'u-modal__body--flow' : '')}
-            style={MAXHeight}>
-            { children }
+            className={'u-modal__mark' + (!showModal? ' u-modal__mark--hide': '')}
+            onClick={ this._handlerMarkClick }></div>
+
+          <div className={'u-modal__content u-modal' + (size? '--' + size : '--m' ) + (showModal? ' u-modal--enter' : '')}>
+            <Icon
+              type="remove"
+              onClick={ onClose } />
+            <Header
+              title={ title }
+              size={ size }/>
+            <div
+              className={ 'u-modal__body ' + (maxHeight? 'u-modal__body--flow' : '') + (!children? ' u-modal__body--empty' : '')}
+              style={MAXHeight}>
+              { children }
+            </div>
+            {
+              showFooter?
+              <Footer
+                onLoding={ onSureLoding }
+                showSureButton={ showSureButton }
+                sureDisabled={ sureDisabled }
+                sureText={ sureText }
+                cancelText={ cancelText }
+                clickSure={ onSure }
+                clickClose={ onClose }
+                size={ size }
+              />:null
+
+            }
           </div>
-          {
-            showFooter?
-            <Footer
-              sureText={sureText}
-              cancelText={cancelText}
-              clickSure={ this._handlerSure.bind(this) }
-              clickClose={ this._handlerClose.bind(this) }
-              size={ size }/>:
-              null
-          }
         </div>
-      </div>): null
+      ) : null
     )
   }
 
-  _handlerMarkClick() {
-    if (!this.props.showModal) return
-    this._handlerClose()
-  }
-
-  _handlerSure() {
-    this.props.onSure && this.props.onSure()
-  }
-
-  _handlerClose() {
+  _handlerMarkClick = () => {
+    if (!this.props.sholudBGClose) return false;
     this.props.onSure && this.props.onClose()
   }
+
 }
 
 export default Modal

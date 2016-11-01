@@ -8,8 +8,9 @@ import Icon from '../Icon'
 * tip: 按钮
 * dec:
 * 参数:
-* 	[ color    ]: 按钮颜色     默认 default      选项：BTN_color
-* 	[ type     ]: 按钮形状     默认 无           选项：BTN_type
+* 	[ color    ]: 按钮颜色     默认 default      选项： BTN_color
+* 	[ type     ]: 按钮形状     默认 无           选项： BTN_type
+* 	[ size     ]: 按钮大小     默认 无           选项： BTN_size
 * 	[ disabled ]: 是否无效化   默认 无
 * 	[ outline  ]: 幽灵化按钮   默认 无
 * 	[ onClick  ]: 点击触发事件 默认 无

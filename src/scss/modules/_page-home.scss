@@ -1,0 +1,196 @@
+@charset "UTF-8";
+.page-home,
+.page-contact,
+.page-contactDetails{
+  .delModal{
+    .u-modal__body {
+      padding: 15px 30px 20px;
+      color: $disabled-color;
+    }
+    .u-checkbox__dec{
+      vertical-align: middle;
+    }
+  }
+  .exportModal{
+    .item{
+      margin: 0 0 10px 0;
+      padding: 0 10px 0 5px;
+      width: 100px;
+      float: left;
+      @include box-sizing(border-box);
+      .u-checkbox__dec{
+        display: inline-block;
+        max-width: 60px;
+        @extend .f-toe;
+      }
+    }
+    .u-checkbox__dec{
+      vertical-align: middle;
+    }
+    .progressBar{
+      line-height: 40px;
+    }
+  }
+  .exportPromptModal{
+    .u-modal__body {
+      padding: 20px 30px;
+      p{
+        font-size: $text-h5-size;
+        line-height: 1.5em;
+      }
+    }
+  }
+  .copyModal{
+    .u-modal__body {
+      padding: 20px 60px;
+    }
+    .leftCt{
+      padding: 0 15px;
+      text-align: right;
+      font-size: $text-h5-size;
+      line-height: 35px;
+    }
+    .u-selectMulti{
+      width: 100%;
+    }
+    a{
+      .u-col-12,
+      .u-col-6{
+        padding: 0 5px;
+        @extend .f-toe;
+      }
+    }
+    .actCt{
+      cursor: pointer;
+    }
+    .u-selectMulti{
+      .hasInput{
+        // border-bottom: none;
+      }
+      &.active{
+        .hasInput{
+          border-bottom: 1px solid$default-border;
+        }
+      }
+    }
+  }
+  .addContactModal{
+    .u-modal__body {
+      padding: 30px 100px;
+      font-size: 14px;
+    }
+    .u-input{
+      width: 400px;
+    }
+    .u-col-4{
+      padding: 0 20px 0 0;
+      text-align: right;
+    }
+    .namRow{
+      margin-bottom: 30px;
+      line-height: 35px;
+    }
+    .actRow{
+      line-height: 45px;
+    }
+    .u-btn{
+      margin-right: 20px;
+    }
+    .processBar{
+      margin: 30px 0 0 700px*4/24;
+      width: 400px;
+    }
+    .offset-col-4{
+      margin-left: 100% * 4/24;
+    }
+    .rc-upload{
+      outline: none;
+    }
+    .u-radio__wrap{
+      cursor: pointer;
+    }
+  }
+  .addContactGroupModal{
+    @extend .addContactModal;
+  }
+  .m-listTable__head,
+  .m-listTable__content{
+    .u-row,
+    .item{
+      @extend .f-toe;
+      @include box-sizing(border-box);
+    }
+    >.u-row{
+      >.item{
+        &.isCt{
+          padding: 0 30px;
+          overflow: hidden;
+        }
+        &:last-child{
+          border-right: none;
+        }
+      }
+    }
+  }
+  .item-group{
+    @include transition(transform .3s ease);
+    // @extend .f-cb;
+    >.item{
+      padding: 0;
+      width: 100px;
+      float: left;
+      .u-input{
+        height: 40px;
+        line-height: 40px;
+        border: none;
+        font-size: 12px;
+        @include box-sizing(border-box);
+        @include border-radius(0);
+        &:focus{
+          border: 1px solid $default-border;
+        }
+      }
+      .item_val{
+        padding: 0 20px;
+        height: 40px;
+        line-height: 40px;
+        @extend .f-toe;
+      }
+    }
+  }
+  .m-listTable__head{
+    position: relative;
+    .arrLeft,
+    .arrRight{
+      margin-top: -.7em;
+      width: 1.5em;
+      height: 1.5em;
+      line-height: 1.5em;
+      position: absolute;
+      top: 50%;
+      z-index: 20;
+      font-size: 18px;
+      cursor: pointer;
+      color: $disabled-color;
+      &:hover{
+        color: $default-color;
+      }
+    }
+    .arrLeft{
+      left: 4.1667%;
+    }
+    .arrRight{
+      right: 4.1667%;
+    }
+  }
+}
+.page-contact{
+  .m-listTable__head{
+    .arrLeft{
+      left: 8.33333%;
+    }
+    .arrRight{
+      right: 37.5%;
+    }
+  }
+}

@@ -1,84 +1,48 @@
 
-import React, { Component, PropTypes } from 'react'
-import Popper from './lib/Popper'
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import {PopperManager, PopperArrow} from './lib'
 
 /**
 * creater: lay
 * tip: 依赖popper.js 压缩后为3k
+* dec: toolTip 现在有问题,待修复
 * 参数:
-*   {Boolean}  alignCenter :提示文字是否要居中
+*   {Boolean}  alignCenter :提示文字是否要居中 默认居中
 *   {String}   content     :提示的文字
 *   {String}   placement   :提示框位置 (left | top | right | bottom) + options(start | end)
 *   {Element}  children    :子组件 (最好以添加button)
 */
 
 class Tooltips extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showPopper: false
-    };
-    this.update = this.update.bind(this);
-  }
-
-  update() {
-    if (this.state.popper) {
-      this.state.popper.update();
-      this.setState({raf: window.requestAnimationFrame(this.update)});
-    }
-  }
-
-  componentDidMount() {
-    let popper = new Popper(this.refs.tip, this.refs.popper, {
-      placement: this.props.placement? this.props.placement : 'bottom',
-      boundariesPadding: 10,
-      gpuAcceleration: false
-    })
-    this.setState({popper}, this.update);
-  }
-
-  componentWillUnmount() {
-    this.state.popper.destroy();
-    if (this.state.raf) {
-      window.cancelAnimationFrame(this.state.raf);
-    }
-  }
-
   render() {
-    let {children, content, placement, alignCenter} = this.props
+    let {children, content, placement, alignCenter = true} = this.props
     return (
-      <div
-        className={'u-tip__wrap ' + (this.state.showPopper? 'active': '' )}
-        onMouseEnter={ this._handlerMouseEnter.bind(this) }
-        onMouseLeave={ this._handlerMouseLeave.bind(this) }>
-        <div className="u-tip__content" ref="tip">
-          { children }
-        </div>
-        <div
-          className={'u-tip__popper ' + (alignCenter? 'u-tip--Textcenter': 'u-tip--Textleft')}
-          ref="popper">
-          <div>{ content }</div>
-        </div>
-      </div>
+      <PopperManager placement={placement} ref="popper">
+          {/* Reference */}
+          <div
+            className="u-tip__content"
+            onMouseEnter={ this._handlerMouseEnter.bind(this) }
+            onMouseLeave={ this._handlerMouseLeave.bind(this) }>
+            { children }
+          </div>
+          {/* Popper */}
+          <div className={(alignCenter? 'u-tip--Textcenter': 'u-tip--Textleft')}>
+            { content }
+            <PopperArrow className="popper__arrow"/>
+          </div>
+      </PopperManager>
     )
   }
 
   _handlerMouseEnter() {
-    this.setState({showPopper: true})
+    this.refs.popper._popperNode.className = 'u-tip__popper active'
   }
 
   _handlerMouseLeave() {
-    this.setState({showPopper: false})
+    this.refs.popper._popperNode.className = 'u-tip__popper'
   }
 }
 
-Tooltips.propTypes = {
-  content: PropTypes.string,
-  placement: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element
-  ])
-}
 
 export default Tooltips

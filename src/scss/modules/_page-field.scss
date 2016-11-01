@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+.page-field {
+  &-group {
+    padding: 0 30px 0 20px;
+  }
+  &-item {
+    line-height: 35px;
+    margin-bottom: 20px;
+
+    &-name {
+      font-size: 14px;
+      font-weight: 100;;
+      padding-right: 15px;
+      text-align: right;
+    }
+
+    &--tipBox {
+      position: relative;
+      margin-bottom: 0;
+
+      .icon-question-circle-o {
+        padding-right: 6px;
+      }
+    }
+  }
+
+  &--label {
+    .u-radio__wrap {
+      padding-right: 20px;
+    }
+  }
+
+  &--uniqueBox {
+    font-size: 14px;
+    line-height: 30px;
+  }
+  &__labelItem p{
+    padding-left: 20px;
+    line-height: 25px;
+    color: $text-link;
+    font-size: 12px;
+  }
+}
+.page-field,
+.page-filter {
+  &--error {
+    color: $text-error;
+  }
+}

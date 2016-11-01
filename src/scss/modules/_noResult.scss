@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+.m-noResult {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  margin-top: -42px;
+  text-align: center;
+
+  &__info {
+    line-height: 30px;
+    font-size: 14px;
+    .tip {
+      font-weight: normal;;
+      color: $primary-color;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

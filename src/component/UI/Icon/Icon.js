@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-
+import React, { Component, PropTypes } from 'react'
+import classnames from 'classnames'
 /**
 * creater: lay
 * tip: icon的基本类
@@ -15,11 +15,22 @@ class Icon extends Component {
   }
 
   render() {
-    let { type, onClick } = this.props
+    let { type, onClick, className } = this.props
+
+    const iconClassName = classnames({
+      'iconfont': true,
+      [`icon-${type}`]: type,
+      [className]: className
+    })
+
     return (
-      <i className={ 'iconfont icon-' + type } onClick={ onClick }></i>
+      <i className={ iconClassName } onClick={ onClick }></i>
     )
   }
+}
+
+Icon.propTypes = {
+  type: PropTypes.string.isRequired
 }
 
 export default Icon

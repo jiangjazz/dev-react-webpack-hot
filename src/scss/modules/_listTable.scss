@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+$head-bg: #fafafa;
+$list-hover-bg: #eeeeee;
+$list-checked-bg: #fff7dc;
+
+.m-listTable {
+  &__wrap {
+    padding: 0 20px;
+    background-color: $white;
+    .icon-remove-o,
+    .icon-plus-o,
+    .icon-sort-alpha-asc {
+      padding-left: 6px;
+      color: $text-link;
+      cursor: pointer;
+      &:hover {
+        color: $text-link-hover;
+      }
+    }
+  }
+  &__head {
+    height: 41px;
+    line-height: 41px;
+    border-bottom: 1px solid $list-hover-bg;
+    background-color: $head-bg;
+  }
+
+  &__head,
+  &__content {
+    text-align: center;
+    >ul>li {
+      &:first-child {
+        text-align: left;
+        padding-left: 23px;
+      }
+      &:last-child {
+        font-size: 14px;
+        text-align: right;
+        padding-right: 20px;
+        &>i {
+          float: right;
+        }
+      }
+    }
+  }
+
+  &__content {
+    >ul {
+      height: 45px;
+      line-height: 45px;
+      border-bottom:1px solid $default-border;
+      &:hover {
+        background-color: $list-hover-bg;
+        .icon-remove-o,
+        .icon-plus-o {
+          display: block;
+        }
+      }
+      &.active {
+        background-color: $list-checked-bg
+      }
+    }
+    .icon-remove-o,
+    .icon-plus-o {
+      display: none;
+    }
+  }
+
+}

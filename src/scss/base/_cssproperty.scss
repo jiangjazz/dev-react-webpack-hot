@@ -49,6 +49,3 @@
 @mixin background-image($value){
     @include prefixerValue(background-image, $value, webkit moz ms o);
 }
-
-
-

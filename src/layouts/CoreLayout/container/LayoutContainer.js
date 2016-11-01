@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  setActiveTab
+  // setActiveTab
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LayoutView)
